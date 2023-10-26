@@ -75,6 +75,13 @@
 
     <!--引入映射文件，每一个Mapper.xml都需要在Mybatis核心配置文件中注册！！-->
     <mappers>
-        <mapper resource="mappers/UserMapper.xml"/>
+        <!--<mapper resource="mappers/UserMapper.xml"/>-->
+        <!--
+            以包为单位引入映射文件
+            要求：
+                1、mapper接口所在的包要和映射文件所在的包一致
+                2、mapper接口所在的包名要和映射文件的名字一致
+        -->
+        <package name="com.chy.mapper"/>
     </mappers>
 </configuration>
