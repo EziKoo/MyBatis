@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.chy.mybatis.mapper.ParameterMapper">
+
+    <!--List<User> getAllUser();-->
+    <select id="getAllUser" resultType="User">
+        select * from user
+    </select>
+
+    <!--User getUserByUserName(String username);-->
+    <select id="getUserByUserName" resultType="User">
+        <!--select * from user where name = #{username}-->
+        select * from user where name = '${username}'
+    </select>
+
+    <!--User checkLogin(String username, String password);-->
+    <select id="checkLogin" resultType="User">
+        <!--select * from user where name = #{arg0} and pwd = #{arg1}-->
+        select * from user where name = '${param1}' and pwd = '${param2}'
+    </select>
+
+    <!--User checkLoginByMap(Map<String, Object> map);-->
+    <select id="checkLoginByMap" resultType="User">
+        select * from user where name = #{username} and pwd = #{pwd}
+    </select>
+
+    <!--int insertUser(User user);-->
+    <insert id="insertUser">
+        insert into user values(#{id}, #{name}, #{pwd})
+    </insert>
+
+</mapper>
