@@ -1,11 +1,18 @@
 package com.chy.mybatis.mapper;
 
 import com.chy.mybatis.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
 
 public interface ParameterMapper {
+    /**
+     * 验证登录（使用@Param）
+     */
+    User checkLoginByParam(@Param("username") String username, @Param("password") String password);
+
+
     /**
      * 查询所有的员工信息
      */

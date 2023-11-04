@@ -33,4 +33,9 @@
         insert into user values(#{id}, #{name}, #{pwd})
     </insert>
 
+    <!--User checkLoginByParam(@Param("username") String username, @Param("password") String password);-->
+    <select id="checkLoginByParam" resultType="User">
+        select * from user where name = #{username} and pwd = #{password}
+    </select>
+
 </mapper>
