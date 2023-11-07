@@ -14,4 +14,10 @@
     </select>
 
 
+    <!--int deleteMore(@Param("ids") String ids);-->
+    <delete id="deleteMore">
+        delete from user where id in (${ids})
+    </delete>
+
+
 </mapper>

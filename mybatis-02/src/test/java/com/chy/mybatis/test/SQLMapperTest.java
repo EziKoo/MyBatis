@@ -17,4 +17,13 @@ public class SQLMapperTest {
         List<User> list = mapper.getUserByLike("chy");
         System.out.println(list);
     }
+
+
+    @Test
+    public void testDeleteMore(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
+        int result = mapper.deleteMore("1,2,3");
+        System.out.println(result);
+    }
 }
