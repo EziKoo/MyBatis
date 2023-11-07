@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.chy.mybatis.mapper.SQLMapper">
+
+    <!--List<User> getUserByLike(@Param("username") String username);-->
+    <select id="getUserByLike" resultType="User">
+        <!--select * from user where name like '%${username}%'-->
+        <!--select * from user where name like concat('%',#{username},'%')-->
+        select * from user where name like "%"#{username}"%"
+    </select>
+
+
+</mapper>
