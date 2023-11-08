@@ -12,6 +12,8 @@ public class Emp {
 
     private String email;
 
+    private Dept dept;
+
     public Emp() {
     }
 
@@ -21,6 +23,14 @@ public class Emp {
         this.age = age;
         this.sex = sex;
         this.email = email;
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
     }
 
     public Integer getEid() {
@@ -71,6 +81,7 @@ public class Emp {
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
                 ", email='" + email + '\'' +
+                ", dept=" + dept +
                 '}';
     }
 }
