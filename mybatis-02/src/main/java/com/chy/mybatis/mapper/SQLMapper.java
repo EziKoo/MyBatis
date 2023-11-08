@@ -24,4 +24,10 @@ public interface SQLMapper {
      */
     List<User> getUserByTableName(@Param("tableName") String tableName);
 
+
+    /**
+     * 添加用户信息
+     */
+    void insertUser(User user);
+
 }
