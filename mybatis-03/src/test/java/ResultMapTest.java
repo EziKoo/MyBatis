@@ -1,4 +1,6 @@
+import com.chy.mybatis.mapper.DeptMapper;
 import com.chy.mybatis.mapper.EmpMapper;
+import com.chy.mybatis.pojo.Dept;
 import com.chy.mybatis.pojo.Emp;
 import com.chy.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -25,6 +27,10 @@ public class ResultMapTest {
      *      a>级联属性赋值
      *      b>association标签
      *      c>分布查询
+     *
+     * 处理一对多的映射关系
+     *      a>collection
+     *      b>分布查询
      */
 
     @Test
@@ -54,6 +60,15 @@ public class ResultMapTest {
         System.out.println(emp.getEmpName());
         System.out.println("-------------------------------------");
         System.out.println(emp.getDept());
+    }
+
+
+    @Test
+    public void testGetDeptAndEmp(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmp(1);
+        System.out.println(dept);
     }
 
 }
