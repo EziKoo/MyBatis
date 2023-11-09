@@ -71,4 +71,14 @@ public class ResultMapTest {
         System.out.println(dept);
     }
 
+
+    @Test
+    public void testGetDeptAndEmpByStep(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmpByStepOne(1);
+        // System.out.println(dept);
+        System.out.println(dept.getDeptName());
+    }
+
 }
