@@ -6,5 +6,9 @@
 <!--namespace=绑定一个对应的Dao/Mapper接口-->
 <mapper namespace="com.chy.mybatis.mapper.DeptMapper">
 
+    <!--Dept getEmpAndDeptByStepTwo(@Param("did") Integer did);-->
+    <select id="getEmpAndDeptByStepTwo" resultType="Dept">
+        select * from t_dept where did = #{did}
+    </select>
 
 </mapper>

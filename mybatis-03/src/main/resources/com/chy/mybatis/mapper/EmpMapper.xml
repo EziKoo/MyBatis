@@ -46,9 +46,48 @@
         <result property="dept.did" column="did"></result>
         <result property="dept.deptName" column="dept_name"></result>
     </resultMap>
+
+    <!--
+        处理多对一映射关系方式二：association
+        association：处理多对一的映射关系
+        property:需要处理多对一的映射关系的属性名
+        javaType:该属性的类型
+    -->
+    <resultMap id="empAndDeptResultMapTwo" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+        <association property="dept" javaType="Dept">
+            <id property="did" column="did"></id>
+            <result property="deptName" column="dept_name"></result>
+        </association>
+    </resultMap>
     <!--Emp getEmpAndDept(@Param("eid") Integer eid);-->
-    <select id="getEmpAndDept" resultMap="empAndDeptResultMapOne">
+    <select id="getEmpAndDept" resultMap="empAndDeptResultMapTwo">
         select * from t_emp left join t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid}
+    </select>
+
+
+    <resultMap id="empAndDeptByStepResultMap" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+        <!--
+            select: 设置分布查询的sql的唯一标识（namespace.SQLId或mapper接口的全类名，方法名）
+            column: 设置分布查询的条件
+        -->
+        <association property="dept"
+                     select="com.chy.mybatis.mapper.DeptMapper.getEmpAndDeptByStepTwo"
+                     column="did">
+        </association>
+    </resultMap>
+    <!--Emp getEmpAndDeptByStepOne(@Param("eid") Integer eid);-->
+    <select id="getEmpAndDeptByStepOne" resultMap="empAndDeptByStepResultMap">
+        select * from t_emp where eid = #{eid}
     </select>
 
 
