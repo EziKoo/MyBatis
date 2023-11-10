@@ -7,7 +7,7 @@
 <mapper namespace="com.chy.mybatis.mapper.DynamicSQLMapper">
 
     <!--List<Emp> getEmpByCondition(Emp emp);-->
-    <select id="getEmpByCondition" resultType="Emp">
+    <select id="getEmpByConditionOne" resultType="Emp">
         select * from t_emp where 1=1
         <if test="empName != null and empName != ''">
             and emp_name = #{empName}
@@ -21,6 +21,24 @@
         <if test="email != null and email != ''">
             and email = #{email}
         </if>
+    </select>
+
+    <select id="getEmpByCondition" resultType="Emp">
+        select * from t_emp
+        <where>
+            <if test="empName != null and empName != ''">
+                emp_name = #{empName}
+            </if>
+            <if test="age != null and age != ''">
+                and age = #{age}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+        </where>
     </select>
 
 </mapper>
