@@ -1,3 +1,5 @@
+package com.chy.mybatis.test;
+
 import com.chy.mybatis.mapper.DeptMapper;
 import com.chy.mybatis.mapper.EmpMapper;
 import com.chy.mybatis.pojo.Dept;
