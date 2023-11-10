@@ -86,4 +86,29 @@
         </where>
     </select>
 
+
+    <!--int deleteMoreByArray(@Param("eids") Integer[] eids);-->
+    <delete id="deleteMoreByArray">
+        <!--第一种方式：where in ()-->
+        <!--delete from t_emp where eid in-->
+        <!--<foreach collection="eids" item="eid" separator="," open="(" close=")">-->
+        <!--    #{eid}-->
+        <!--</foreach>-->
+
+        <!--第二种方式：where or -->
+        delete from t_emp where
+        <foreach collection="eids" item="eid" separator="or">
+            eid = #{eid}
+        </foreach>
+    </delete>
+
+
+    <!--int insertMoreByList(List<Emp> emps);-->
+    <insert id="insertMoreByList">
+        insert into t_emp values
+        <foreach collection="emps" item="emp" separator=",">
+            (null,#{emp.empName},#{emp.age},#{emp.sex},#{emp.email},null)
+        </foreach>
+    </insert>
+
 </mapper>

@@ -6,6 +6,7 @@ import com.chy.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DynamicSQLMapperTest {
@@ -24,6 +25,12 @@ public class DynamicSQLMapperTest {
      *          若标签中没有内容时，trim标签也没有任何效果
      *      4、choose、when、otherwise，相当于if...else if...else
      *          when至少要有一个，otherwise最多只能有一个
+     *      5、foreach
+     *          collection:设置需要循环的数组或集合
+     *          item:表示数组或集合中的每一个数据
+     *          separator:循环体之间的分隔符
+     *          open:foreach标签所循环的所有内容的开始符
+     *          close:foreach标签所循环的所有内容的结束符
      */
 
     @Test
@@ -41,6 +48,27 @@ public class DynamicSQLMapperTest {
         DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
         List<Emp> list = mapper.getEmpByChoose(new Emp(null, "", 23, null, null));
         System.out.println(list);
+    }
+
+
+    @Test
+    public void testDeleteMoreByArray(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        int result = mapper.deleteMoreByArray(new Integer[]{7, 8, 9});
+        System.out.println(result);
+    }
+
+
+    @Test
+    public void testInsertMoreByList(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        Emp emp1 = new Emp(null,"a1",25,"男","222333@qq.com");
+        Emp emp2 = new Emp(null,"a2",13,"女","111333@qq.com");
+        Emp emp3 = new Emp(null,"a3",55,"男","444333@qq.com");
+        List<Emp> emps = Arrays.asList(emp1, emp2, emp3);
+        System.out.println(mapper.insertMoreByList(emps));
     }
 
 }
