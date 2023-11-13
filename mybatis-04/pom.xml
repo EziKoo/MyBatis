@@ -12,6 +12,14 @@
     <groupId>com.chy.mybatis</groupId>
     <artifactId>mybatis-04</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+    </dependencies>
+
     <build>
 
         <!--构建过程中用到的插件-->
