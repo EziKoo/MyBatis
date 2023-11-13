@@ -10,4 +10,9 @@ public interface CacheMapper {
      *通过员工id查询员工信息
      */
     Emp getEmpByEid(@Param("eid") Integer eid);
+
+    /**
+     * 添加员工
+     */
+    void insertEmp(Emp emp);
 }
