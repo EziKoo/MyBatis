@@ -43,8 +43,10 @@
     </select>
 
 
+    <sql id="empColumns">eid,emp_name,age,sex,email</sql>
+
     <select id="getEmpByCondition" resultType="Emp">
-        select * from t_emp
+        select <include refid="empColumns"></include> from t_emp
         <trim prefix="where" suffixOverrides="and|or">
             <if test="empName != null and empName != ''">
                 emp_name = #{empName} and

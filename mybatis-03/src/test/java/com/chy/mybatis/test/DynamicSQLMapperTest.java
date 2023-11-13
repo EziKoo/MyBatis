@@ -31,6 +31,9 @@ public class DynamicSQLMapperTest {
      *          separator:循环体之间的分隔符
      *          open:foreach标签所循环的所有内容的开始符
      *          close:foreach标签所循环的所有内容的结束符
+     *      6、sql标签
+     *          设置SQL片段：<sql id="empColumns">eid,emp_name,age,sex,email</sql>
+     *          引用SQL片段：<include refid="empColumns"></include>
      */
 
     @Test
