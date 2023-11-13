@@ -6,6 +6,8 @@
 <!--namespace=绑定一个对应的Dao/Mapper接口-->
 <mapper namespace="com.chy.mybatis.mapper.CacheMapper">
 
+    <cache />
+
     <!--Emp getEmpByEid(@Param("eid") Integer eid);-->
     <select id="getEmpByEid" resultType="Emp">
         select * from t_emp where eid = #{eid}
