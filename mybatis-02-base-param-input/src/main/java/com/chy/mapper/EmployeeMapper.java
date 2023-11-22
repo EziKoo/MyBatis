@@ -21,8 +21,5 @@ public interface EmployeeMapper {
     // 根据工资查询员工信息
     List<Employee> queryBySalary(Double salary);
 
-    // 插入员工数据 【实体对象】
-    int insertEmp(Employee employee);
-
 
 }
