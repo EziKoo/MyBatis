@@ -28,5 +28,6 @@
     <mappers>
         <!--<package name="com.chy.mapper"/>-->
         <mapper resource="mappers/EmployeeMapper.xml"/>
+        <mapper resource="mappers/StudentMapper.xml"/>
     </mappers>
 </configuration>
