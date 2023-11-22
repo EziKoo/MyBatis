@@ -35,4 +35,13 @@
         select emp_id empId,emp_name empName, emp_salary empSalary from t_emp where emp_salary = ${salary}
     </select>
 
+    <!--
+        场景2：传入的是一个实体类对象 key 如何写？
+            key = 属性名即可！！
+    -->
+    <!--int insertEmp(Employee employee);-->
+    <insert id="insertEmp">
+        insert into t_emp (emp_name, emp_salary) values(#{empName},#{empSalary})
+    </insert>
+
 </mapper>
