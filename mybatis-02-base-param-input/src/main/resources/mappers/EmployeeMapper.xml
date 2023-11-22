@@ -22,9 +22,17 @@
         select emp_id empId,emp_name empName, emp_salary empSalary from t_emp where emp_id = ${id}
     </select>
 
-    <!--Employee deleteById(Integer id);-->
+    <!--int deleteById(Integer id);-->
+    <!--
+        场景1：传入的单个简单类型 key 随便写 一般情况下推荐使用参数名！
+    -->
     <delete id="deleteById">
         delete from t_emp where emp_id = #{id}
     </delete>
+
+    <!--List<Employee> queryBySalary(Double salary);-->
+    <select id="queryBySalary" resultType="com.chy.pojo.Employee">
+        select emp_id empId,emp_name empName, emp_salary empSalary from t_emp where emp_salary = ${salary}
+    </select>
 
 </mapper>

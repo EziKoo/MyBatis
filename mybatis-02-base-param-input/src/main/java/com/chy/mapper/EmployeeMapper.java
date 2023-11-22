@@ -2,6 +2,8 @@ package com.chy.mapper;
 
 import com.chy.pojo.Employee;
 
+import java.util.List;
+
 /**
  * @Author: EziKoo
  * @Date: 2023/11/22 15:14
@@ -14,6 +16,10 @@ public interface EmployeeMapper {
     Employee queryById(Integer id);
 
     // 根据id删除员工信息
-    Employee deleteById(Integer id);
+    int deleteById(Integer id);
+
+    // 根据工资查询员工信息
+    List<Employee> queryBySalary(Double salary);
+
 
 }
