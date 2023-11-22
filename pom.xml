@@ -14,6 +14,7 @@
         <module>mybatis-02</module>
         <module>mybatis-03</module>
         <module>mybatis-04</module>
+        <module>mybatis-01-base-quick</module>
     </modules>
 
 
@@ -29,7 +30,7 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.6</version>
+            <version>3.5.11</version>
         </dependency>
         <!--junit测试-->
         <dependency>
@@ -43,6 +44,12 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
+        </dependency>
+        <!--junit5测试-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.3.1</version>
         </dependency>
     </dependencies>
 
