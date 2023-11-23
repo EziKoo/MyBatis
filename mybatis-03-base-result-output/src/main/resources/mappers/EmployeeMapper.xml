@@ -61,4 +61,15 @@
         select * from t_emp where emp_id = ${id}
     </select>
 
+    <!--Map<String,Object> selectEmpNameAndMaxSalary();-->
+    <select id="selectEmpNameAndMaxSalary" resultType="map">
+        SELECT
+        emp_name 员工姓名,
+        emp_salary 员工工资,
+        (SELECT AVG(emp_salary) FROM t_emp) 部门平均工资
+        FROM t_emp WHERE emp_salary=(
+        SELECT MAX(emp_salary) FROM t_emp
+        )
+    </select>
+
 </mapper>

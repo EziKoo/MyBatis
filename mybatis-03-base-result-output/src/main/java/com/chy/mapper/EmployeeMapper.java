@@ -2,6 +2,8 @@ package com.chy.mapper;
 
 import com.chy.pojo.Employee;
 
+import java.util.Map;
+
 /**
  * @Author: EziKoo
  * @Date: 2023/11/22 15:14
@@ -22,5 +24,8 @@ public interface EmployeeMapper {
 
     // 返回单个自定义实体类型
     Employee queryById(Integer id);
+
+    // 查询员工的最高工资和平均工资
+    Map<String,Object> selectEmpNameAndMaxSalary();
 
 }
