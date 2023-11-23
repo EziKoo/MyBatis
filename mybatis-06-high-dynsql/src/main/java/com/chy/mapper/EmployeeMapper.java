@@ -21,4 +21,7 @@ public interface EmployeeMapper {
     // 根据员工id更新员工的数据，我们要求 传入的name和salary不为空才更新
     int update(Employee employee);
 
+    // 根据两个条件查询，如果姓名不为空使用姓名查询，如果姓名为空，薪水不为空就使用薪水查询！都为null 查询全部
+    List<Employee> queryChoose(@Param("name") String name, @Param("salary") Double salary);
+
 }

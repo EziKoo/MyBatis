@@ -73,4 +73,20 @@
     </select>
 
 
+    <!--List<Employee> queryChoose(@Param("name") String name, @Param("salary") Double salary);-->
+    <select id="queryChoose" resultType="employee">
+        select * from t_emp
+        where
+        <choose>
+            <when test="name != null">
+                emp_name = #{name}
+            </when>
+            <when test="salary != null">
+                and emp_salary = #{salary}
+            </when>
+            <otherwise>1=1</otherwise>
+        </choose>
+    </select>
+
+
 </mapper>
