@@ -12,4 +12,6 @@ public interface TeacherMapper {
 
     int insertTeacher(Teacher teacher);
 
+    Teacher queryById(String tId);
+
 }
