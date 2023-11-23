@@ -37,4 +37,40 @@
             </where>
     </select>
 
+    <!--int update(Employee employee);
+        全部满足：没问题
+        第一个满足：多了一个 ,
+        第二个满足：没问题
+        都不满足：语法错误
+
+        set：1、自动去掉多余的 ,
+            2、自动添加set关键字
+    -->
+    <update id="update">
+        update t_emp
+            <set>
+                <if test="empName != null">
+                    emp_name = #{empName},
+                </if>
+                <if test="empSalary">
+                    emp_salary = #{emp_salary}
+                </if>
+            </set>
+        where emp_id = #{empId}
+    </update>
+
+    <!--List<Employee> queryTrim(@Param("name") String name, @Param("salary") Double salary);-->
+    <select id="queryTrim" resultType="employee">
+        select * from t_emp
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="name != null">
+                emp_name = #{name}
+            </if>
+            <if test="salary != null and salary &gt; 100">
+                and emp_salary = #{salary}
+            </if>
+        </trim>
+    </select>
+
+
 </mapper>
