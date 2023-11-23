@@ -2,6 +2,7 @@ package com.chy.mapper;
 
 import com.chy.pojo.Employee;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,5 +28,11 @@ public interface EmployeeMapper {
 
     // 查询员工的最高工资和平均工资
     Map<String,Object> selectEmpNameAndMaxSalary();
+
+    // 查询工资高于传入值的员工姓名们 200
+    List<String> queryNamesBySalary(Double salary);
+
+    // 查询全部员工信息
+    List<Employee> queryAll();
 
 }

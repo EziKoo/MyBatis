@@ -61,6 +61,13 @@
         select * from t_emp where emp_id = ${id}
     </select>
 
+    <!--
+        场景3：返回map
+            当没有实体类或者对应属性实体类的时候！
+            我们可以使用map接收数据！
+            key -> 查询的列
+            value -> 查询的值
+    -->
     <!--Map<String,Object> selectEmpNameAndMaxSalary();-->
     <select id="selectEmpNameAndMaxSalary" resultType="map">
         SELECT
@@ -70,6 +77,21 @@
         FROM t_emp WHERE emp_salary=(
         SELECT MAX(emp_salary) FROM t_emp
         )
+    </select>
+
+    <!--
+        场景4：返回的是集合类型如何指定
+            切记：返回值是集合，resultType不需要指定集合类型，只需要指定泛型即可
+            为什么？
+                mybatis -> ibatis -> selectOne 单个 | selectList 集合 -> selectOne 调用 【selectList】
+    -->
+    <!--List<Employee> queryNamesBySalary(Double salary);-->
+    <select id="queryNamesBySalary" resultType="string">
+        select emp_name from t_emp where emp_salary > #{salary}
+    </select>
+    <!--List<Employee> queryAll();-->
+    <select id="queryAll" resultType="employee">
+        select * from t_emp
     </select>
 
 </mapper>
