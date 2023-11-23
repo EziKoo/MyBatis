@@ -6,6 +6,10 @@
 <!--namespace=绑定一个对应的Dao/Mapper接口-->
 <mapper namespace="com.chy.mapper.EmployeeMapper">
 
+    <sql id="selectSql">
+        select * from t_emp
+    </sql>
+
     <!--List<Employee> query(@Param("name") String name, @Param("salary") Double salary);
         如果传入属性，就判断相等，如果不传入，不加对应的条件
         where
@@ -26,7 +30,7 @@
             2、自动去掉多余的and 和 or关键字
     -->
     <select id="query" resultType="employee">
-        select * from t_emp
+        <include refid="selectSql" />
             <where>
                 <if test="name != null">
                     emp_name = #{name}
@@ -61,7 +65,7 @@
 
     <!--List<Employee> queryTrim(@Param("name") String name, @Param("salary") Double salary);-->
     <select id="queryTrim" resultType="employee">
-        select * from t_emp
+        <include refid="selectSql" />
         <trim prefix="where" prefixOverrides="and|or">
             <if test="name != null">
                 emp_name = #{name}
@@ -75,7 +79,7 @@
 
     <!--List<Employee> queryChoose(@Param("name") String name, @Param("salary") Double salary);-->
     <select id="queryChoose" resultType="employee">
-        select * from t_emp
+        <include refid="selectSql" />
         where
         <choose>
             <when test="name != null">
@@ -92,7 +96,7 @@
     <!--// 根据id的批量查询-->
     <!--List<Employee> queryBatch(@Param("ids") List<Integer> ids);-->
     <select id="queryBatch" resultType="employee">
-        select * from t_emp
+        <include refid="selectSql" />
             where emp_id in
             <!--
                 collection：遍历的数据
