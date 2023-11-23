@@ -17,6 +17,7 @@
         <module>mybatis-01-base-quick</module>
         <module>mybatis-02-base-param-input</module>
         <module>mybatis-03-base-result-output</module>
+        <module>mybatis-04-base-crud</module>
     </modules>
 
 
@@ -52,6 +53,11 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
         </dependency>
     </dependencies>
 
