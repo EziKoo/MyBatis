@@ -94,4 +94,17 @@
         select * from t_emp
     </select>
 
+    <!--
+        场景5：主键回显 获取插入数据的主键
+            1、自增长主键回显 mysql auto_increment
+            useGeneratedKeys = "true" 我们想要数据库自动增长的主键值
+            keyColumn="emp_id"：主键列的值！
+            keyProperty="empId"：接收主键列值的属性！
+    -->
+    <!--int insertEmp(Employee employee);-->
+    <insert id="insertEmp" useGeneratedKeys="true" keyColumn="emp_id" keyProperty="empId">
+        insert into t_emp (emp_name,emp_salary)
+            values(#{empName},#{empSalary})
+    </insert>
+
 </mapper>

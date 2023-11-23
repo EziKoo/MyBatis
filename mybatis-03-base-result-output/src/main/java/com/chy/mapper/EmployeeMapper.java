@@ -35,4 +35,7 @@ public interface EmployeeMapper {
     // 查询全部员工信息
     List<Employee> queryAll();
 
+    // 员工插入
+    int insertEmp(Employee employee);
+
 }
