@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.chy.mapper.EmployeeMapper">
+
+    <!--int deleteById(Integer id);-->
+    <delete id="deleteById">
+        delete from t_emp where emp_id = #{id}
+    </delete>
+
+    <!--
+        场景1：返回单个简单类型如何指定，resultType的写法！ 返回值的数据类型！！
+            resultType语法：
+                类的全限定符号
+                别名简称
+                    mybatis给我们提供了72种默认的别名！
+                    这些都是我们常用的java数据类型！
+                        基本数据类型 int double -> _int _double
+                        包装数据类型 Integer Double -> int integer double
+                        集合容器类型 Map List HashMap -> 小写即可 map list hashmap
+
+                扩展：如果没有提供的需要我们自己定义或者写类的全限定符号
+                    给自己声明的类定义别名：
+                            单独设置
+                                <typeAliases>
+                                    <typeAlias type="com.chy.pojo.Employee" alias="ergouzi"></typeAlias>
+                                </typeAliases>
+                            批量设置
+                                <typeAliases>
+                                    <package name="com.chy.pojo"/>
+                                </typeAliases>
+                            扩展：如果不想使用批量的别名，可以使用注解给与别名
+                            @Alias()
+    -->
+    <!--String queryNameById(Integer id);-->
+    <select id="queryNameById" resultType="java.lang.String">
+        select emp_name from t_emp where emp_id = #{id}
+    </select>
+
+    <!--String querySalaryById(Integer id);-->
+    <select id="querySalaryById" resultType="java.lang.Double">
+        select emp_salary from t_emp where emp_id = #{id}
+    </select>
+
+</mapper>
