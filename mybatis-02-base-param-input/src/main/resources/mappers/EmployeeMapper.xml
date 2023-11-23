@@ -44,4 +44,20 @@
         insert into t_emp (emp_name, emp_salary) values(#{empName},#{empSalary})
     </insert>
 
+    <!--
+        场景3：传入多个简单类型数据如何取值 key!
+            不可以随便写！
+            按照形参名称获取？ 也不可以！
+            方案一：注解指定 @Param注解 指定多个简单参数的key  key = @Param("value值") 【推荐】
+            方案二：mybatis 默认机制
+                arg0 arg1 ... 形参从左到右依次对应 arg0 arg1 ...
+                (name,salary) name -> key = arg0; salary -> key = arg1 ....
+                param1 param2...
+                (name,salary) name -> key = param1; salary -> key = param2 ....
+    -->
+    <!--List<Employee> queryByNameAndSalary(String name, Double salary);-->
+    <select id="queryByNameAndSalary" resultType="com.chy.pojo.Employee">
+        select emp_id empId,emp_name empName, emp_salary empSalary from t_emp where emp_name = #{name} and emp_salary = ${salary}
+    </select>
+
 </mapper>
