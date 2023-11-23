@@ -24,4 +24,16 @@ public interface EmployeeMapper {
     // 根据两个条件查询，如果姓名不为空使用姓名查询，如果姓名为空，薪水不为空就使用薪水查询！都为null 查询全部
     List<Employee> queryChoose(@Param("name") String name, @Param("salary") Double salary);
 
+    // 根据id的批量查询
+    List<Employee> queryBatch(@Param("ids") List<Integer> ids);
+
+    // 根据id的批量删除
+    int deleteBatch(@Param("ids") List<Integer> ids);
+
+    // 批量添加
+    int insertBatch(@Param("list") List<Employee> employees);
+
+    // 批量修改
+    int updateBatch(@Param("list") List<Employee> employees);
+
 }
