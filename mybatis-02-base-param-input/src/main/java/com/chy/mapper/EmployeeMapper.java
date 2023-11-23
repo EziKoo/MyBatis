@@ -4,6 +4,7 @@ import com.chy.pojo.Employee;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: EziKoo
@@ -27,6 +28,10 @@ public interface EmployeeMapper {
 
     // 根据员工姓名和工资查询员工信息
     List<Employee> queryByNameAndSalary(@Param("name") String name, @Param("salary") Double salary);
+
+    // 插入员工数据，传入的是一个map(name=员工的名字, salary=员工的薪水)
+    // mapper接口中不允许重载！！ 方法名重复了 id名重复了！
+    int insertEmpMap(Map data);
 
 
 }
