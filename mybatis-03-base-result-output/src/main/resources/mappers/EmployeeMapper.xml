@@ -45,4 +45,20 @@
         select emp_salary from t_emp where emp_id = #{id}
     </select>
 
+    <!--
+        场景2：返回单个自定义类型
+            resultType：返回值类型即可
+
+            默认要求：
+                查询：返回单个实体类型，要求列名和属性名要一致
+                这样才可以进行实体类的属性映射！
+
+            但是可以进行设置，设置支持驼峰式自动映射！
+                emp_id -> empId
+    -->
+    <!--Employee queryById(Integer id);-->
+    <select id="queryById" resultType="employee">
+        select * from t_emp where emp_id = ${id}
+    </select>
+
 </mapper>

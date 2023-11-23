@@ -1,5 +1,7 @@
 package com.chy.mapper;
 
+import com.chy.pojo.Employee;
+
 /**
  * @Author: EziKoo
  * @Date: 2023/11/22 15:14
@@ -18,5 +20,7 @@ public interface EmployeeMapper {
     // 根据员工的id查询员工的薪资
     Double querySalaryById(Integer id);
 
+    // 返回单个自定义实体类型
+    Employee queryById(Integer id);
 
 }
